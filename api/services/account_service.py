@@ -580,7 +580,13 @@ class RegisterService:
 
             account = cls.register(email=email, name=name, language=language, status=AccountStatus.PENDING)
             # Create new tenant member for invited tenant
-            TenantService.create_tenant_member(tenant, account, role)
+            # TenantService.create_tenant_member(tenant, account, role) # 原代码
+            # TenantService.switch_tenant(account, tenant.id) # 原代码
+            
+            # 通过邀请，创建一个用户专属的租户空间
+            logging.info()
+            tenant = TenantService.create_tenant(f"{account.name}'s Workspace")
+            TenantService.create_tenant_member(tenant, account, role) 
             TenantService.switch_tenant(account, tenant.id)
         else:
             TenantService.check_member_permission(tenant, inviter, account, "add")
