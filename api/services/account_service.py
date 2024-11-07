@@ -584,8 +584,8 @@ class RegisterService:
             # TenantService.switch_tenant(account, tenant.id) # 原代码
             
             # 通过邀请，创建一个用户专属的租户空间
-            logging.info()
             tenant = TenantService.create_tenant(f"{account.name}'s Workspace")
+            logging.info("[DIFY-MT] TenantService.create_tenant: %s " % tenant.id)
             TenantService.create_tenant_member(tenant, account, role) 
             TenantService.switch_tenant(account, tenant.id)
         else:
