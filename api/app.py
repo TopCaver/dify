@@ -239,6 +239,9 @@ def register_blueprints(app):
 
     app.register_blueprint(inner_api_bp)
 
+    from controllers.xinshu_plugin_api import bp as xinshu_bp
+    app.register_blueprint(xinshu_bp)
+
 
 # create app
 app = create_app()
