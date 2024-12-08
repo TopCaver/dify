@@ -21,7 +21,8 @@ class InviteApi(Resource):
         account = Account.query.filter_by(email=reg_email).first()
 
         if not account:
-            account = RegisterService.register(email=reg_email, name=name, language='zh-Hans', status=AccountStatus.PENDING)
+            account = RegisterService.register(email=reg_email, name=name, 
+                                               language='zh-Hans', status=AccountStatus.PENDING)
             tenant = TenantService.create_tenant(f"{account.name}'s Workspace")
             logging.info(f"[DIFY-xinshu-MT] Invite by API: account:{account.name}, tenant: {tenant.id}")
             TenantService.create_tenant_member(tenant, account, role="owner") 
@@ -32,14 +33,15 @@ class InviteApi(Resource):
             invite_url = f"{dify_config.CONSOLE_WEB_URL}/activate?token={token}"
             logging.info(f"[DIFY-xinshu-MT] Invite by API: token:{token}")
             return {
-                "result":"success",
+                "result": "success",
                 "token": token,
                 "invite-url": invite_url
             }
         else:
             return {
-                "result":"faild",
-                "error":"用户已经存在"
+                "result": "faild",
+                "error": "邮箱已经存在"
             }
+
 
 api.add_resource(InviteApi, "/invite")
