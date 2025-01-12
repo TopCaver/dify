@@ -81,7 +81,7 @@ class AppGenerateResponseConverter(ABC):
                 updated_resources.append(
                     {
                         "segment_id": resource["segment_id"],
-                        "position": resource["position"],
+                        "position": resource.get("position", ""),
                         "document_name": resource["document_name"],
                         "score": resource["score"],
                         "content": resource["content"],

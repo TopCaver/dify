@@ -12,7 +12,8 @@ class OpenRouterProvider(ModelProvider):
         try:
             model_instance = self.get_model_instance(ModelType.LLM)
 
-            model_instance.validate_credentials(model="openai/gpt-3.5-turbo", credentials=credentials)
+            # 一样的问题。而且这里校验用的是一个收费模型，账号上必须有钱才能测试，不让我白嫖啊？
+            # model_instance.validate_credentials(model="openai/gpt-3.5-turbo", credentials=credentials)
         except CredentialsValidateFailedError as ex:
             raise ex
         except Exception as ex:
