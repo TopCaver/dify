@@ -32,6 +32,8 @@ export default async function SignInLayout({ children }: any) {
         </div>
         <div className='px-8 py-6 system-xs-regular text-text-tertiary'>
           © {new Date().getFullYear()} LangGenius, Inc. All rights reserved.
+          <p><a title="京ICP备15022048号-3" href="http://beian.miit.gov.cn"><span>京ICP备15022048号-3</span></a>
+          </p>
         </div>
       </div>
     </div>

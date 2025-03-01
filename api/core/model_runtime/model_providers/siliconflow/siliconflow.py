@@ -18,7 +18,8 @@ class SiliconflowProvider(ModelProvider):
         try:
             model_instance = self.get_model_instance(ModelType.LLM)
 
-            model_instance.validate_credentials(model="deepseek-ai/DeepSeek-V2.5", credentials=credentials)
+            # 去掉这里的校验，这tm模型一下线，校验就出错了，写的什么狗屎代码
+            # model_instance.validate_credentials(model="deepseek-ai/DeepSeek-V2.5", credentials=credentials)
         except CredentialsValidateFailedError as ex:
             raise ex
         except Exception as ex:

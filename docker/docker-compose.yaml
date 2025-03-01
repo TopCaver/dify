@@ -393,8 +393,9 @@ x-shared-env: &shared-api-worker-env
 services:
   # API service
   api:
-    image: langgenius/dify-api:0.15.3
+    image: dify-api:0.15.3-multi-tenant
     restart: always
+    pull_policy: never
     environment:
       # Use the shared environment variables.
       <<: *shared-api-worker-env
@@ -416,8 +417,9 @@ services:
   # worker service
   # The Celery worker for processing the queue.
   worker:
-    image: langgenius/dify-api:0.15.3
+    image: dify-api:0.15.3-multi-tenant
     restart: always
+    pull_policy: never
     environment:
       # Use the shared environment variables.
       <<: *shared-api-worker-env

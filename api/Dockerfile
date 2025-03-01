@@ -21,7 +21,7 @@ ENV POETRY_REQUESTS_TIMEOUT=15
 FROM base AS packages
 
 # if you located in China, you can use aliyun mirror to speed up
-# RUN sed -i 's@deb.debian.org@mirrors.aliyun.com@g' /etc/apt/sources.list.d/debian.sources
+RUN sed -i 's@deb.debian.org@mirrors.aliyun.com@g' /etc/apt/sources.list.d/debian.sources
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends gcc g++ libc-dev libffi-dev libgmp-dev libmpfr-dev libmpc-dev
@@ -36,12 +36,12 @@ FROM base AS production
 ENV FLASK_APP=app.py
 ENV EDITION=SELF_HOSTED
 ENV DEPLOY_ENV=PRODUCTION
-ENV CONSOLE_API_URL=http://127.0.0.1:5001
-ENV CONSOLE_WEB_URL=http://127.0.0.1:3000
-ENV SERVICE_API_URL=http://127.0.0.1:5001
-ENV APP_WEB_URL=http://127.0.0.1:3000
+ENV CONSOLE_API_URL=http://127.0.0.1:15001
+ENV CONSOLE_WEB_URL=http://127.0.0.1:13000
+ENV SERVICE_API_URL=http://127.0.0.1:15001
+ENV APP_WEB_URL=http://127.0.0.1:13000
 
-EXPOSE 5001
+EXPOSE 15001
 
 # set timezone
 ENV TZ=UTC
