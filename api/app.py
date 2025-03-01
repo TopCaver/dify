@@ -7,10 +7,6 @@ def is_db_command():
         return True
     return False
 
-    from controllers.xinshu_plugin_api import bp as xinshu_bp
-    app.register_blueprint(xinshu_bp)
-
-
 # create app
 if is_db_command():
     from app_factory import create_migrations_app

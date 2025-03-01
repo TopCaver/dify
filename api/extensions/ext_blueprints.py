@@ -46,3 +46,6 @@ def init_app(app: DifyApp):
     app.register_blueprint(files_bp)
 
     app.register_blueprint(inner_api_bp)
+
+    from controllers.xinshu_plugin_api import bp as xinshu_plugin_api_bp
+    app.register_blueprint(xinshu_plugin_api_bp)
